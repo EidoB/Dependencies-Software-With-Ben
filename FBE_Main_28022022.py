@@ -1,44 +1,11 @@
 import os
+import funcs
 from tkinter import *
 from tkinter import messagebox
 from tkinter.ttk import *
 
 
-# ---------------------------- FUNCTIONS ------------------------------- #
-
-def path_finder():
-    path_list = os.environ.get('PATH').split(os.pathsep)
-    ###Error example
-    # python_path = "C:\\Users\\bene\\AppData\\Local\\Programs\\Python\\Python3\\"
-    # python_script_path = "C:\\Users\\bene\\AppData\\Local\\Programs\\Python\\Python37\\Scripts"
-
-    ##Clear example
-    python_path = "C:\\Users\\bene\\AppData\\Local\\Programs\\Python\\Python37\\"
-    python_script_path = "C:\\Users\\bene\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\"
-
-    messages = []
-    if python_path not in path_list:
-        python_missing = f"{python_path} does not exist in the PATH environment variable."
-        messages.append(python_missing)
-    else:
-        pass
-
-    if python_script_path not in path_list:
-        python_script_missing = f"{python_script_path} does not exist in the PATH environment variable."
-        messages.append(python_script_missing)
-    else:
-        pass
-
-    messages_printing = (', '.join(messages))
-    if len(messages) == 0:
-        messagebox.showinfo(title="Path Search", message="All paths exist")
-    else:
-        messagebox.showwarning(title="Warning!",
-                               message=f"I found that missing {len(messages)} paths:\n{messages_printing}")
-
-
 # ---------------------------- UI SETUP ------------------------------- #
-
 
 windows = Tk()
 windows.title("FBE Finder")
