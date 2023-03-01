@@ -54,11 +54,4 @@ component_text = Label(text="Select the component:",style="BW.TLabel" , font=("c
 component_text.place(x=136, y=275)
 
 windows.mainloop()
-# Set the Python path you want to check
-# python_path = "C:/Python39"
 
-
-# Get the list of paths in the PATH environment variable
-
-
-# Check if the Python path exists in the list of paths
