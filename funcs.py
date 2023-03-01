@@ -49,7 +49,7 @@ def checkclientipaddress():
         print('your client address not set')
         logfile.write('your client address is not set properly\n')
 
-checkbmcipaddress()
-checkpythonpath()
-checkdbipaddress()
-checkclientipaddress()
+# checkbmcipaddress()
+# checkpythonpath()
+# checkdbipaddress()
+# checkclientipaddress()
