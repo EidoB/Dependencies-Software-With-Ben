@@ -1,5 +1,6 @@
 import os
 import socket
+import subprocess
 
 logfile = open('benandeido.log','w+')
 clientaddress = open('clientipaddresses.txt','r')
@@ -48,8 +49,28 @@ def checkclientipaddress():
     else:
         print('your client address not set')
         logfile.write('your client address is not set properly\n')
+def checkbmcsoftwares():
+    data = subprocess.check_output(['wmic', 'product', 'get', 'name'])
+    a = str(data)
+    softwares = ""
+    try:
+        for i in range(len(a)):
+            softwares = softwares + a.split("\\r\\r\\n")[6:][i]
+    except IndexError as e:
+        pass
+    if ' Microsoft Visual C++ 2010  x86 Redistributable' in softwares:
+        pass
+    else:
+        print ('Microsoft Visual C++ 2010  x86 Redistributable is missing')
+        logfile.write(' Microsoft Visual C++ 2010  x86 Redistributable is missing\n')
+    if 'Microsoft Visual C++ 2008 Redistributable' in softwares:
+        pass
+    else:
+        print ('Microsoft Visual C++ 2008 Redistributable is missing')
+        logfile.write(' Microsoft Visual C++ 2008 Redistributable is missing\n')   
 
 # checkbmcipaddress()
 # checkpythonpath()
 # checkdbipaddress()
 # checkclientipaddress()
+# checkbmcsoftwares()
