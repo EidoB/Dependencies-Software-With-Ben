@@ -47,6 +47,7 @@ def checkclientipaddress():
             break
     else:
         write_to_log('ERROR your client IP address is not set properly')
+
 def checkbmcsoftwares():
     data = subprocess.check_output(['wmic', 'product', 'get', 'name'])
     a = str(data)
@@ -60,10 +61,104 @@ def checkbmcsoftwares():
         write_to_log('INFO Visual C++ 2010  x86 Redistributable is existing')
     else:
         write_to_log('ERROR Microsoft Visual C++ 2010  x86 Redistributable is missing')
-    if 'Microsoft Visual C++ 2008 Redistributable' in softwares:
-        write_to_log('INFO Visual C++ 2008  Redistributable is existing')
+    if 'Microsoft Visual C++ 2008 Redistributable - x64' in softwares:
+        write_to_log('INFO Visual C++ 2008  Redistributable x64 is existing')
     else:
-        write_to_log('ERROR Microsoft Visual C++ 2008 Redistributable is missing')   
+        write_to_log('ERROR Microsoft Visual C++ 2008 Redistributable x64 is missing')
+    if 'Microsoft Visual C++ 2008 Redistributable - x86' in softwares:
+        write_to_log('INFO Visual C++ 2008  Redistributable x86 is existing')
+    else:
+        write_to_log('ERROR Microsoft Visual C++ 2008 Redistributable x86 is missing')
+    if 'Microsoft Visual C++ 2019 X64 Minimum Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X64 Minimum Runtime is existing')
+    else: 
+        write_to_log('ERROR Visual C++ 2019 X64 Minimum Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X64 Additional Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X64 Additional Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X64 Additional Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X86 Minimum Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X86 Minimum Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X86 Minimum Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X86 Additional Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X86 Additional Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X86 Additional Runtime is missing')
+
+def checkclientsoftwares():
+    data = subprocess.check_output(['wmic', 'product', 'get', 'name'])
+    a = str(data)
+    softwares = ""
+    try:
+        for i in range(len(a)):
+            softwares = softwares + a.split("\\r\\r\\n")[6:][i]
+    except IndexError as e:
+        pass
+    if 'Microsoft Visual C++ 2019 X64 Minimum Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X64 Minimum Runtime is existing')
+    else: 
+        write_to_log('ERROR Visual C++ 2019 X64 Minimum Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X64 Additional Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X64 Additional Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X64 Additional Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X86 Minimum Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X86 Minimum Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X86 Minimum Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X86 Additional Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X86 Additional Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X86 Additional Runtime is missing')
+
+def checkicssoftwares():
+    data = subprocess.check_output(['wmic', 'product', 'get', 'name'])
+    a = str(data)
+    softwares = ""
+    try:
+        for i in range(len(a)):
+            softwares = softwares + a.split("\\r\\r\\n")[6:][i]
+    except IndexError as e:
+        pass
+    if ' Microsoft Visual C++ 2010  x86 Redistributable' in softwares:
+        write_to_log('INFO Visual C++ 2010  x86 Redistributable is existing')
+    else:
+        write_to_log('ERROR Microsoft Visual C++ 2010  x86 Redistributable is missing')
+    if 'Microsoft Visual C++ 2019 X64 Minimum Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X64 Minimum Runtime is existing')
+    else: 
+        write_to_log('ERROR Visual C++ 2019 X64 Minimum Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X64 Additional Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X64 Additional Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X64 Additional Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X86 Minimum Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X86 Minimum Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X86 Minimum Runtime is missing')
+    if 'Microsoft Visual C++ 2019 X86 Additional Runtime' in softwares:
+        write_to_log('INFO Visual C++ 2019 X86 Additional Runtime is existing')
+    else:
+        write_to_log('ERROR Visual C++ 2019 X86 Additional Runtime is missing')
+
+def checkdbsoftwares():
+    data = subprocess.check_output(['wmic', 'product', 'get', 'name'])
+    a = str(data)
+    softwares = ""
+    try:
+        for i in range(len(a)):
+            softwares = softwares + a.split("\\r\\r\\n")[6:][i]
+    except IndexError as e:
+        pass
+    if 'SQL Server 2017' in softwares:
+        write_to_log('INFO SQL Server 2017 is existing')
+    else:
+        write_to_log('ERROR SQL Server 2017 is missing')
+    if ' Microsoft Visual C++ 2010  x86 Redistributable' in softwares:
+        write_to_log('INFO Visual C++ 2010  x86 Redistributable is existing')
+    else:
+        write_to_log('ERROR Microsoft Visual C++ 2010  x86 Redistributable is missing')
 
 def write_to_log(log_data):
     now = datetime.datetime.now()
@@ -123,4 +218,7 @@ def map_path_checker():
 # check_dotnet_framework_35()
 # bmc_server_log_name()
 # map_path_checker()
-#create check icssoftwares, dbsoftwares, client softwares, and update bmc softwares
+# checkbmcsoftwares()
+# checkdbsoftwares()
+# checkclientsoftwares()
+#create check winpcap, ESRI ArcGIS, Screen Pressor, NTP meinberg, function that run all the functions per host
