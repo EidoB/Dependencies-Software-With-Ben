@@ -1,11 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
 
-
-def change_screen():
-    for main_screen in windows.winfo_children():
-        main_screen.destroy()
-
+from funcs import *
 
 # ---------------------------- UI MAIN PROGRAM ------------------------------- #
 
@@ -28,32 +24,35 @@ style.configure('TButton', font=('calibri', 14, 'bold'))
 style_label = Style()
 style_label.configure("BW.TLabel", foreground="white", background="#0e0604")
 
-style.map('TButton', foreground=[('active', '!disabled', 'blue')],
-          background=[('active', 'black')])
+style.map('TButton', foreground=[('active', '!disabled', 'blue')],background=[('active', 'black')])
+
 
 def close():
     windows.destroy()
 
 
-def main_screen():
-    global bmc_button, ics_button, db_button, client_button, component_text
+def about():
+    messagebox.showinfo(title="About", message="Integration dependencies application Version 1.0 by Ben Eytan & Eido Bennun ")
 
-    bmc_button = Button(text="BMC", width=9)
+
+def main_screen():
+    bmc_button = Button(text="BMC", width=9, command=bmc_checker)
     bmc_button.place(x=130, y=315)
 
-    db_button = Button(text="DB", width=9)
+    db_button = Button(text="DB", width=9, command=db_checker)
     db_button.place(x=270, y=315)
 
-    ics_button = Button(text="Tomer", width=9)
+    ics_button = Button(text="ICS", width=9, command=ics_checker)
     ics_button.place(x=130, y=370)
 
-    client_button = Button(text="Client", width=9)
+    client_button = Button(text="Client", width=9, command=client_checker)
     client_button.place(x=270, y=370)
 
     component_text = Label(text="Select the Component:", style="BW.TLabel", font=("calibri", 18, "bold"))
     component_text.place(x=136, y=265)
 
-    Button(text="Exit", width=4, command=close).place(x=440, y=470)
+    Button(text="Exit", width=5, command=close).place(x=430, y=470)
+    Button(text="About", width=5, command=about).place(x=360, y=470)
 
 
 main_screen()
